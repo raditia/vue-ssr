@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
     res.status(200).send(html);
   } catch (err) {
     console.log('Files in dist/client:', fs.readdirSync(path.join(__dirname, '..', 'dist', 'client')));
-    console.error('SSR error:', err);
+    console.log('SSR error:', err);
     res.status(500).send('Internal Server Error');
   }
 };
