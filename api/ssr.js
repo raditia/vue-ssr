@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Import the SSR render function from your built server bundle.
-const { render } = require('../dist/server/entry-server.js');
+const { render } = require(path.join(__dirname, '..', 'dist', 'server', 'entry-server.js'));
 
 module.exports = async (req, res) => {
   try {
