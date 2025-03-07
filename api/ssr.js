@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
     const templatePath = path.join(__dirname, '..', 'dist', 'client', 'index.html');
 
     // Optionally, log available files for debugging
-    console.log('Files in dist/client:', fs.readdirSync(path.join(__dirname, '..', 'dist', 'client')));
+    // console.log('Files in dist/client:', fs.readdirSync(path.join(__dirname, '..', 'dist', 'client')));
 
     const template = fs.readFileSync(templatePath, 'utf-8');
 
