@@ -3,20 +3,18 @@ const fs = require('fs');
 
 module.exports = async (req, res) => {
   try {
-    // Build absolute paths based on the function's directory
+    // Build the absolute path to index.html based on __dirname
     const templatePath = path.join(__dirname, '..', 'dist', 'client', 'index.html');
-    const entryServerPath = path.join(__dirname, '..', 'dist', 'server', 'entry-server.mjs');
 
-    // Read the client template
+    // Optionally, log available files for debugging
+    console.log('Files in dist/client:', fs.readdirSync(path.join(__dirname, '..', 'dist', 'client')));
+
     const template = fs.readFileSync(templatePath, 'utf-8');
 
-    // Dynamically import the SSR bundle (which is an ES module)
+    const entryServerPath = path.join(__dirname, '..', 'dist', 'server', 'entry-server.mjs');
     const { render } = await import(entryServerPath);
 
-    // Use the render function to get your app's HTML
     const { appContent } = await render(req.url);
-
-    // Inject the rendered content into your HTML template
     const html = template.replace(`<!--app-html-->`, appContent);
 
     res.setHeader('Content-Type', 'text/html');
