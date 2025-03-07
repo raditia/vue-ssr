@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
   try {
     const url = req.url;
     // Read the pre-built HTML template from the client build.
-    const templatePath = path.resolve('./dist/client/index.html');
+    const templatePath = path.join(__dirname, '..', 'dist', 'client', 'index.html');
     const template = fs.readFileSync(templatePath, 'utf-8');
 
     // Render the app to a string using your SSR render function.
