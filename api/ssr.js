@@ -1,19 +1,22 @@
-// api/ssr.js
-const fs = require('fs');
 const path = require('path');
-
-// Import the SSR render function from your built server bundle.
-const { render } = require(path.join(__dirname, '..', 'dist', 'server', 'entry-server.js'));
+const fs = require('fs');
 
 module.exports = async (req, res) => {
   try {
-    const url = req.url;
-    // Read the pre-built HTML template from the client build.
+    // Build absolute paths based on the function's directory
     const templatePath = path.join(__dirname, '..', 'dist', 'client', 'index.html');
+    const entryServerPath = path.join(__dirname, '..', 'dist', 'server', 'entry-server.mjs');
+
+    // Read the client template
     const template = fs.readFileSync(templatePath, 'utf-8');
 
-    // Render the app to a string using your SSR render function.
-    const { appContent } = await render(url);
+    // Dynamically import the SSR bundle (which is an ES module)
+    const { render } = await import(entryServerPath);
+
+    // Use the render function to get your app's HTML
+    const { appContent } = await render(req.url);
+
+    // Inject the rendered content into your HTML template
     const html = template.replace(`<!--app-html-->`, appContent);
 
     res.setHeader('Content-Type', 'text/html');

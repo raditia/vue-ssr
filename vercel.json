@@ -6,7 +6,7 @@
       "src": "api/ssr.js",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": "dist/server/entry-server.js"
+        "includeFiles": "dist/server/**"
       }
     },
     {
