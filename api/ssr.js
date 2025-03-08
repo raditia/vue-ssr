@@ -19,6 +19,8 @@ module.exports = async (req, res) => {
     const clientEntry = manifest['src/entry-client.js'].file;
     const clientScriptTag = `<script type="module" src="/${clientEntry}"></script>`;
 
+    console.log('manifest', manifest);
+    console.log('clientEntry', clientEntry);
     console.log('clientScript', clientScriptTag);
 
     const { appContent } = await render(req.url);
