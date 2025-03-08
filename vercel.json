@@ -1,9 +1,13 @@
 {
   "version": 2,
   "installCommand": "npm cache clean --force && npm i vite -g && npm install",
-  "buildCommand": "npm run build",
+  "buildCommand": "vite build --ssrManifest --outDir dist/client && cp index.html dist/client && vite build --ssr src/entry-server.js --outDir dist/server && ls -R dist",
   "version": 2,
   "builds": [
+    {
+      "src": "dist/client/**/*",
+      "use": "@vercel/static"
+    },
     {
       "src": "api/ssr.js",
       "use": "@vercel/node",
@@ -13,10 +17,6 @@
           "dist/server/**"
         ]
       }
-    },
-    {
-      "src": "dist/client/**/*",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
