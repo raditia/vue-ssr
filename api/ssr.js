@@ -10,6 +10,9 @@ module.exports = async (req, res) => {
     const clientDir = path.join(process.cwd(), 'dist', 'client');
     console.log('Contents of dist/client:', fs.existsSync(clientDir) ? fs.readdirSync(clientDir) : 'Directory not found');
 
+    const serverDir = path.join(process.cwd(), 'dist', 'server');
+    console.log('Contents of dist/server:', fs.existsSync(serverDir) ? fs.readdirSync(serverDir) : 'Directory not found');
+
     const templatePath = path.join(clientDir, 'index.html');
     const template = fs.readFileSync(templatePath, 'utf-8');
 
