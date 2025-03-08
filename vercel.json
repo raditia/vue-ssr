@@ -1,7 +1,7 @@
 {
-  "version": 2,
   "installCommand": "npm cache clean --force && npm i vite -g && npm install",
-  "buildCommand": "vite build --ssrManifest --outDir dist/client && cp index.html dist/client && vite build --ssr src/entry-server.js --outDir dist/server && ls -R dist",
+  "buildCommand": "npm run build",
+  "version": 2,
   "version": 2,
   "builds": [
     {
