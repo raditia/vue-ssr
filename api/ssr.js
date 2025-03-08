@@ -3,16 +3,16 @@ const fs = require('fs');
 
 module.exports = async (req, res) => {
   try {
-    // Build the absolute path to index.html based on __dirname
-    // const templatePath = path.join(__dirname, '..', 'dist', 'client', 'index.html');
-    const templatePath = path.join(process.cwd(), 'dist', 'client', 'index.html');
+    const cwd = process.cwd();
+    console.log('process.cwd():', cwd);
+    console.log('__dirname:', __dirname);
 
-    // Optionally, log available files for debugging
-    // console.log('Files in dist/client:', fs.readdirSync(path.join(__dirname, '..', 'dist', 'client')));
+    const clientDir = path.join(process.cwd(), 'dist', 'client');
+    console.log('Contents of dist/client:', fs.existsSync(clientDir) ? fs.readdirSync(clientDir) : 'Directory not found');
 
+    const templatePath = path.join(clientDir, 'index.html');
     const template = fs.readFileSync(templatePath, 'utf-8');
 
-    // const entryServerPath = path.join(__dirname, '..', 'dist', 'server', 'entry-server.mjs');
     const entryServerPath = path.join(process.cwd(), 'dist', 'server', 'entry-server.mjs');
     const { render } = await import(entryServerPath);
 
