@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
     const templatePath = path.join(clientDir, 'index.html');
     const template = fs.readFileSync(templatePath, 'utf-8');
 
-    const entryServerPath = path.join(process.cwd(), 'dist', 'server', 'static,', 'js', 'entry-server.js');
+    const entryServerPath = path.join(process.cwd(), 'dist', 'server', 'static', 'js', 'entry-server.js');
     const { render } = await import(entryServerPath);
 
     const manifest = JSON.parse(fs.readFileSync(`${clientDir}/.vite/ssr-manifest.json`, 'utf-8'));
