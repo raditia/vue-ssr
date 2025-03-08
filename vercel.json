@@ -2,11 +2,13 @@
   "installCommand": "npm cache clean --force && npm i vite -g && npm install",
   "buildCommand": "npm run build",
   "version": 2,
-  "version": 2,
   "builds": [
     {
-      "src": "dist/client/**/*",
-      "use": "@vercel/static"
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/client"
+      }
     },
     {
       "src": "api/ssr.js",
