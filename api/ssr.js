@@ -15,6 +15,10 @@ module.exports = async (req, res) => {
     const entryServerPath = path.join(process.cwd(), 'dist', 'server', 'entry-server.mjs');
     const { render } = await import(entryServerPath);
 
+    const manifest = JSON.parse(fs.readFileSync(`${clientDir}/.vite/ssr-manifest.json`, 'utf-8'));
+    const clientEntry = manifest['src/entry-client.js'].file;
+    const clientScriptTag = `<script type="module" src="/${clientEntry}"></script>`;
+
     const { appContent } = await render(req.url);
     const html = template.replace(`<!--app-html-->`, appContent);
 
