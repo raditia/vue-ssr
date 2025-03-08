@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "installCommand": "npm cache clean --force && npm i vite -g && npm install",
+  "buildCommand": "npm run build",
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/ssr.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "dist/client/**",
+          "dist/server/**"
+        ]
+      }
+    },
+    {
+      "src": "dist/client/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "api/ssr.js"
+    }
+  ]
+}
