@@ -23,6 +23,7 @@ export default {
     const isClient = ref(false);
     onMounted(() => {
       // This code only runs in the browser
+      console.log('isClient', isClient.value);
       isClient.value = true;
     });
     return { isClient };
