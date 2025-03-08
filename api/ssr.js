@@ -17,10 +17,6 @@ module.exports = async (req, res) => {
 
     const clientScriptTag = `<script type="module" src="/src/entry-client.js"></script>`;
 
-    console.log('manifest', manifest);
-    console.log('clientEntry', clientEntry);
-    console.log('clientScript', clientScriptTag);
-
     const { appContent } = await render(req.url);
     const html = template
     .replace(`<!--app-html-->`, appContent)
