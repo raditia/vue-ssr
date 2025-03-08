@@ -19,8 +19,12 @@ module.exports = async (req, res) => {
     const clientEntry = manifest['src/entry-client.js'].file;
     const clientScriptTag = `<script type="module" src="/${clientEntry}"></script>`;
 
+    console.log('clientScript', clientScriptTag);
+
     const { appContent } = await render(req.url);
-    const html = template.replace(`<!--app-html-->`, appContent);
+    const html = template
+    .replace(`<!--app-html-->`, appContent)
+    .replace(`<!--CLIENT-ENTRY-->`, clientScriptTag);
 
     res.setHeader('Content-Type', 'text/html');
     res.status(200).send(html);
