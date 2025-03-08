@@ -1,6 +1,6 @@
 {
   "installCommand": "npm cache clean --force && npm i vite -g && npm install",
-  "buildCommand": "npm run build && npm run build:client && npm run build:server && ls -R dist",
+  "buildCommand": "npm run build",
   "version": 2,
   "version": 2,
   "builds": [

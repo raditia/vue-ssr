@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
     const cwd = process.cwd();
     console.log('process.cwd():', cwd);
     console.log('__dirname:', __dirname);
-    console.log('client:', fs.readdirSync('/var/task'));
+    console.log('client:', fs.readdirSync('/var/task/api'));
 
     const clientDir = path.join(process.cwd(), 'dist', 'client');
     console.log('Contents of dist/client:', fs.existsSync(clientDir) ? fs.readdirSync(clientDir) : 'Directory not found');

@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build:client": "vite build --ssrManifest --outDir dist/client && cp index.html dist/client",
-    "build:server": "vite build --ssr src/entry-server.js --outDir dist/server",
+    "build:client": "vite build --ssrManifest --outDir api/dist/client && cp index.html api/dist/client",
+    "build:server": "vite build --ssr src/entry-server.js --outDir api/dist/server",
     "build": "npm run build:client && npm run build:server && ls -R dist",
     "serve": "node server.js",
     "preview": "vite preview"
