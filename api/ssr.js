@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
     const { render } = await import(entryServerPath);
 
     const manifest = JSON.parse(fs.readFileSync(`${clientDir}/.vite/ssr-manifest.json`, 'utf-8'));
-    const clientEntry = manifest['src/entry-client.js'].file;
+    const clientEntry = manifest['src/entry-client.js'];
     const clientScriptTag = `<script type="module" src="/${clientEntry}"></script>`;
 
     console.log('manifest', manifest);
