@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/__vite_base__/',
+  base: './',
   plugins: [vue()],
   ssr: {},
   legacy: {
