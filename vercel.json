@@ -1,5 +1,5 @@
 {
-  "installCommand": "npm cache clean --force && npm install vite -g && npm install",
+  "installCommand": "npm cache clean --force && npm install",
   "buildCommand": "npm run build",
   "version": 2,
   "builds": [
