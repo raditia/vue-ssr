@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [vue()],
   ssr: {},
   build: {
+    outDir: 'dist/client',
     ssrManifest: true,
     assetsDir: 'static',
     sourcemap: true,
