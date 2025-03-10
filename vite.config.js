@@ -6,9 +6,6 @@ export default defineConfig({
   base: '/',
   plugins: [vue()],
   ssr: {},
-  legacy: {
-    buildSsrCjsExternalHeuristics: true
-  },
   build: {
     outDir: 'dist/client',
     ssrManifest: true,
