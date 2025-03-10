@@ -10,6 +10,8 @@ export default defineConfig({
     buildSsrCjsExternalHeuristics: true
   },
   build: {
+    outDir: 'dist/client',
+    ssrManifest: true,
     assetsDir: 'static',
     sourcemap: true,
     modulePreload: false,

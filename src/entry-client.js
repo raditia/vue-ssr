@@ -1,5 +1,9 @@
-import { createApp } from './main';
+import './style.css'
+import { createApp } from './main'
 
-const { app } = createApp();
-// Hydrate the SSR-rendered HTML
-app.mount('#app');
+const { app, router } = createApp()
+
+router.isReady().then(() => {
+  app.mount('#app')
+})
+
