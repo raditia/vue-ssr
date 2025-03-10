@@ -16,7 +16,8 @@ module.exports = async (req, res) => {
     const { render } = await import(entryServerPath);
 
     const appContent = await render(req.url)
-    const html = template.replace(`<!--app-html-->`, appContent)
+    console.log(appContent)
+    const html = template.replace(`<!--app-html-->`, appContent.html)
 
     res.setHeader('Content-Type', 'text/html');
     res.status(200).send(html);
