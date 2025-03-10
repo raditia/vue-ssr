@@ -2,9 +2,9 @@ import { renderToString } from 'vue/server-renderer'
 import { createApp } from './main'
 
 /**
- * @param {string} _url
+ * @param {string} url
  */
-export async function render(_url) {
+export async function render(url) {
   const { app, router } = createApp()
 
   router.push(url)
