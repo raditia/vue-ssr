@@ -28,10 +28,10 @@ async function createServer() {
       const { render } = await vite.ssrLoadModule('/src/entry-server.js');
 
       // Render the app HTML.
-      const { appContent } = await render(url);
+      const { html: appHtml } = await render(url);
 
       // Inject the rendered app HTML into the template.
-      const html = template.replace(`<!--app-html-->`, appContent);
+      const html = template.replace(`<!--app-html-->`, appHtml);
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
     } catch (e) {
       vite.ssrFixStacktrace(e);
